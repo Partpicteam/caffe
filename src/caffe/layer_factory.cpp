@@ -13,7 +13,7 @@
 caffe::LayerRegistry<float>::CreatorRegistry caffe::LayerRegistry<float>::g_registry_;
 caffe::LayerRegistry<double>::CreatorRegistry caffe::LayerRegistry<double>::g_registry_;
 
-
+//static CreatorRegistry* g_registry_ = new CreatorRegistry();
 namespace caffe {
 	
 
@@ -180,6 +180,8 @@ shared_ptr<Layer<Dtype> > GetPythonLayer(const LayerParameter& param) {
 REGISTER_LAYER_CREATOR(Python, GetPythonLayer);
 #endif
 
+REGISTER_LAYER_CLASS(SPP);
+REGISTER_LAYER_CLASS(Reshape);
 REGISTER_LAYER_CLASS(Data);
 REGISTER_LAYER_CLASS(AbsVal);
 REGISTER_LAYER_CLASS(Accuracy);

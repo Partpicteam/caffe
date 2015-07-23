@@ -80,7 +80,7 @@ class LayerRegistry {
 
  private:
 
-  static CreatorRegistry g_registry_;
+   static CreatorRegistry g_registry_;
 
   // Layer registry should never be instantiated - everything is done with its
   // static variables.
@@ -106,7 +106,7 @@ class LayerRegisterer {
  public:
   LayerRegisterer(const string& type,
                   shared_ptr<Layer<Dtype> > (*creator)(const LayerParameter&)) {
-    // LOG(INFO) << "Registering layer type: " << type;
+     LOG(INFO) << "Registering layer type: " << type;
     LayerRegistry<Dtype>::AddCreator(type, creator);
   }
 };

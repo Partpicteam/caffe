@@ -92,3 +92,7 @@ LOG*
 CURRENT
 MANIFEST-*
 caffe/bin/
+caffee/x64/
+caffee/caffee.sdf
+*.pdb
+*.suo
