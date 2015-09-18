@@ -250,18 +250,19 @@ int main(int argc, char** argv) {
     std::cerr<<"Cannot open the output file."<< outfile <<std::endl;
         return 1;
   }
-
-  std::vector<Prediction> predictions = classifier.Classify(img);
+  int N = 3;
+  std::vector<Prediction> predictions = classifier.Classify(img, N);
   fs << "{" << std::endl;
-  fs << "  file: \"" << file << "\"," << std::endl;
+  fs << "  File: \"" << file << "\"," << std::endl;
+  fs << "  Classes:[ " << std::endl;
   /* Print the top N predictions. */
   for (size_t i = 0; i < predictions.size(); ++i) {
 
     Prediction p = predictions[i];
     fs << std::fixed  << "  {" << std::endl
-		<< "    probability: " << p.second << "," << std::endl
-		<< "    rank: " << i+1 << "," << std::endl
-		<< "    class: " << p.first << std::endl <<
+		<< "    Probability: " << p.second << "," << std::endl
+		<< "    Rank: " << i+1 << "," << std::endl
+		<< "    ClassId: " << p.first << std::endl <<
 		"  }";
 	if (i<predictions.size()-1)
 		fs << ",";
@@ -269,6 +270,7 @@ int main(int argc, char** argv) {
 
 
   }
+  fs << "]" << std::endl;
   fs << "}";
   fs.close();
   return 0;

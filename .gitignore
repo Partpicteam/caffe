@@ -96,3 +96,5 @@ caffee/x64/
 caffee/caffee.sdf
 *.pdb
 *.suo
+*.opensdf
+*.sdf
